@@ -4,24 +4,6 @@ metadata:
   name: rest-service
 spec:
   flows:
-    - restConfiguration:
-        dataFormatProperty:
-          - key: prettyPrint
-            value: 'true'
-        apiProperty:
-          - key: api.version
-            value: 3.20.1
-          - key: api.title
-            value: User API
-        component: undertow
-        scheme: http
-        host: '{{karavan-service.hostname}}'
-        port: '{{karavan-service.port}}'
-        contextPath: /karavan-service
-        apiContextPath: /api-doc
-        bindingMode: 'off'
-        enableCors: true
-        apiComponent: openapi
     - rest:
         id: rest-231a
         delete:
@@ -96,6 +78,24 @@ spec:
           REST Service supporting CRUD operations for a table 'USERS' on MySQL
           DB
         bindingMode: 'off'
+    - restConfiguration:
+        dataFormatProperty:
+          - key: prettyPrint
+            value: 'true'
+        apiProperty:
+          - key: api.version
+            value: 3.20.1
+          - key: api.title
+            value: User API
+        component: servlet
+        scheme: http
+        host: '{{karavan-service.hostname}}'
+        port: '{{karavan-service.port}}'
+        contextPath: /karavan-service
+        apiContextPath: /api-doc
+        bindingMode: 'off'
+        enableCors: true
+        apiComponent: openapi
     - route:
         id: Delete User By ID
         from:
