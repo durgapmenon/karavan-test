@@ -42,8 +42,6 @@ spec:
               - name: id
                 type: path
                 dataType: integer
-            security:
-              - {}
             path: /users/{id}
             consumes: application/json
             produces: application/json
@@ -283,8 +281,3 @@ spec:
                 json:
                   id: json-1145
                   library: gson
-    - route:
-        id: route-d4b4
-        from:
-          uri: kamelet:aws-ddb-streams-source
-          id: from-c964
