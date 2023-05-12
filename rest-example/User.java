@@ -2,10 +2,15 @@ import org.apache.camel.BindToRegistry;
 import java.util.*;
 import org.apache.camel.Exchange;
 import com.google.gson.Gson;
+
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 
 @Named("userBean")
 @BindToRegistry("userBean")
+@ApplicationScoped
+@RegisterForReflection
 public class User{
 
     public HashMap<String, String> findUserById(Exchange exchange){
