@@ -1,0 +1,36 @@
+- restConfiguration:
+    host: localhost
+    port: '3000'
+    contextPath: /notes
+    apiContextPath: /notes
+- rest:
+    id: rest-1b22
+    get:
+      - id: get-2d16
+        path: /
+        to: direct:Ping
+        consumes: application/json
+        produces: application/json
+    path: /notes
+    consumes: application/json
+    produces: application/json
+- route:
+    id: Ping
+    from:
+      uri: direct:Ping
+      id: from-f306
+      steps:
+        - setBody:
+            id: setBody-81a8
+            expression:
+              simple:
+                expression: |-
+                  {
+                      message: "pong"
+                  }
+                id: simple-0dc3
+        - marshal:
+            id: marshal-8889
+            json:
+              id: json-9331
+              library: jackson
